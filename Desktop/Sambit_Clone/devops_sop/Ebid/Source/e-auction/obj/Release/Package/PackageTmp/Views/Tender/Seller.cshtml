@@ -1,0 +1,398 @@
+﻿@model e_auction.Models.Tender
+@{
+    ViewBag.Title = "Seller";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+@using (Html.BeginForm("Seller", "Tender", FormMethod.Post))
+{
+    
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Content/js/jquery.plugin.js"></script>
+    <script src="~/content/js/jquery.countdown.js"></script>
+    <script src="~/Content/js/jquery.countdownTimer.min.js"></script>
+    <script src="~/Content/js/jquery-2.0.3.js"></script>
+    <script type="text/javascript">
+        function getbid(a) {
+            
+            var p = $("#Price").val();
+            if (p == null)
+            {
+                p = 0;
+            }
+            var tenderid = $("#tenderid").val();
+            var bidunit = $("#Unit").val();
+            
+            $.ajax({
+                type: 'POST',
+                dataType: "json",
+                url: 'getbiddata',
+                data: { 'itemid': a,'tenderid':tenderid,'Price':p,'unit':bidunit },
+                success: function (data) {
+                    
+                    $("#biddata").html('<p> Your Expected Bid is ' + data[0].BidPrice + ' </p>');
+                    $("#itemid").val(a);
+                    $("#PriceExpected").val(data[0].BidPrice);
+                    @*$("#AddBid").click(function () {
+
+                        $.ajax({
+                            type: 'POST',
+                            datatype: "json",
+                            url: '/Tender/Seller',
+                            data: { 'itemid': a, 'tenderid':' @Request.QueryString["tenderid"]'},
+                            success: function (data) {
+
+                            }
+                        })
+                    })*@
+
+                },
+                failure: function (err) { alert('error'); }
+            });
+        }
+        $(document).ready(function () {
+            var interval = 100 * 10 * 1;
+            var tenderid = $("#tenderid").val();
+
+            function get_notify(tenderid)
+            {
+                $.ajax({
+                    type: 'POST',
+                    dataType: "json",
+                    url: 'getnotify',
+                    data: { 'tenderid': tenderid },
+                    success: function (data) {
+                        if (data.length > 0)
+                        {
+                            $("#notify").html('<div id="notify" class="alert alert-error">' + data[0].NotifyText + '</div>');
+                        }
+                        
+                    },
+                    failure: function (err) { alert('error'); }
+                });
+                
+            }
+            setInterval(get_notify, interval, tenderid);
+        });
+
+        $(document).ready(function () {
+            var interval = 100 * 10 * 1;
+            var tenderid = $("#tenderid").val();
+            var int = 1000;
+            
+            function countdown(timeLeft) {
+                
+                clearInterval(myinterval);
+                var myinterval=window.setInterval(function () {
+                    clearInterval(myinterval);
+                    var msPerDay = 24 * 60 * 60 * 1000;
+                    timeLeft = timeLeft - 1000;
+                    var e_daysLeft = timeLeft / msPerDay;
+                    var daysLeft = Math.floor(e_daysLeft);
+                    var e_hrsLeft = (e_daysLeft - daysLeft) * 24;
+                    var hrsLeft = Math.floor(e_hrsLeft);
+                    var e_minsLeft = (e_hrsLeft - hrsLeft) * 60;
+                    var minsLeft = Math.floor(e_minsLeft);
+                    var e_secsLeft = (e_minsLeft - minsLeft) * 60;
+                    var secsLeft = Math.floor(e_secsLeft);
+                    var timeString = daysLeft+" : "+ hrsLeft+" : " +minsLeft + " : " + secsLeft;
+                    if (daysLeft==0&&hrsLeft==0&&minsLeft==0&&secsLeft==0) {
+                        $.ajax({
+                            type: 'POST',
+                            dataType: "json",
+                            url: 'updateTender',
+                            data: { 'tenderid': tenderid },
+                            success: function ()
+                            {
+                                location.reload();
+                            }
+                        });
+                    }
+                    if (timeLeft < 0)
+                    {
+                        $('#given_date').html("<span style='font-size:medium; color:Red'>Time Over</span>");
+                    }
+                    else {
+                        $('#given_date').html("Time Left <span style='font-size:medium; color:Red'>" + timeString + "</span>");
+                    }
+                }, 1000);
+            }
+            function getenddate(tenderid) {
+                $.ajax({
+                    type: 'POST',
+                    dataType: "json",
+                    url: 'gettenderdetail',
+                    data: { 'tenderid': tenderid },
+                    success: function (data) {
+                        
+                        $("#" + data[0].TenderId).html('<td id=' + data[0].TenderId + '>' + data[0].EndDate + ' ' + data[0].EndTime + ' </td>');
+                        var dateget = data[0].EndDate + ' ' + data[0].EndTime;
+                        var tenderid = data[0].TenderId;
+                        var current = data[0].Currenttime;
+                            $("#currenttime").val(data[0].Currenttime);
+                        $("#enddate").val(dateget);
+                        var get = $("#enddate").val();
+                        var t = dateget.split(/[/ :]/);
+                        var BigDay = new Date(t[2], t[1] - 1, t[0], t[3], t[4], t[5]);
+                        var c = current.split(/[/ :]/);
+                        var today = new Date(c[2], c[1] - 1, c[0], c[3], c[4], c[5]);
+                        var timeLeft = (BigDay.getTime() - today.getTime());
+                        
+                        countdown(timeLeft);
+                        
+                    },
+                    failure: function (err) { alert('error'); }
+                });
+
+            }
+            setInterval(getenddate, interval, tenderid);
+        });
+        $(document).ready(function () {
+            var interval = 100 * 60 * 1;
+            var tenderid = $("#tenderid").val();
+            
+            function getLeadingBid(tenderid) {
+                
+                $.ajax({
+                    type: 'POST',
+                    dataType: "json",
+                    url: 'getitems',
+                    data: { 'tenderid': tenderid },
+                    success: function (data) {
+                        var itemcount = data.length;
+                        for (i = 0; i <= itemcount; i++)
+                        {
+                            if (data[i].BidCount == 0)
+                            {
+                                $("#"+data[i].itemid).html('<td id='+data[i].itemid+'>' + data[i].FloorPrice + ' INR </td>');
+                            }
+                            else
+                            {
+                                $("#"+data[i].itemid).html('<td id=' + data[i].itemid + '>' + data[i].Leading + ' INR</td>');
+                            }
+                            
+                        }
+                    },
+                    failure: function (err) { alert('error'); }
+                });
+            }
+           
+            setInterval(getLeadingBid, interval, tenderid);
+            
+        });
+    </script>
+
+    <div id="modal-1" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">New Bid</h3>
+        </div>
+        <div class="modal-body">
+            <p id="biddata">Your Expected Bid is</p>
+            <input type="hidden" id="PriceExpected" name="PriceExpected" />
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <input type="hidden" value="@Request.QueryString["tenderid"]" name="tenderid" id="tenderid" />
+            <input type="hidden" value="" id="itemid" name="itemid" />
+            <input type="hidden" value="" id="enddate" name="enddate" />
+            
+            <input type="submit" class="btn btn-primary" name="Add" value="Add" id="AddBid">
+        </div>
+    </div>
+    <div id="notify" ></div>
+    <div class="offset6">
+        
+        <span  class="right" id="given_date"></span>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-title">
+                        <h3>
+                            Auction Detail
+                        </h3>
+                    </div>
+                    <div class="box-content nopadding">
+                        <table class="table table-hover table-nomargin table-colored-header">
+                            <thead>
+                                <tr>
+                                    <th>Tender ID</th>
+                                    <th>Description</th>
+                                    <th>Raised by</th>
+                                    <th>Currency</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Attachment</th>
+                                </tr>
+                            </thead>
+                            
+                            <tbody>
+                                @foreach (var item in ViewBag.TenderDetail)
+                                {
+                                    <tr>
+                                        <td>@item.TenderId</td>
+                                        <td>@item.Tenderdesc</td>
+                                        <td>@item.contactPerson</td>
+                                        <td>INR</td>
+                                        <td>@item.StartDate &nbsp;@item.StartTime</td>
+                                        <td id="@item.TenderId">@item.EndDate &nbsp; @item.EndTime</td>
+                                        <input type="hidden" value="@item.Currenttime" id="currenttime" name="currenttime" />
+                                        <td><a href="@Url.Action("Download", "Tender", new { @tenderid=Request.QueryString["tenderid"]})">Download</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-title">
+                        <h3>
+                            Item Details
+                        </h3>
+                    </div>
+                    <div class="box-content nopadding">
+                        <table class="table table-hover table-nomargin table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Item Name</th>
+                                    <th class='hidden-350'>Item Description</th>
+                                    <th class='hidden-1024'>Quantity</th>
+                                    <th class='hidden-480'>UOM</th>
+                                    <th class='hidden-480'>Leading Bid</th>
+                                    <th class='hidden-480'>Price Reduce/Bid</th>
+                                    <th>Bid Now</th>
+                                </tr>
+                            </thead>
+                            <tbody id="itemlisttable">
+
+                                @foreach (var item in ViewBag.ItemDetail)
+                                {
+                                    <tr>
+                                        <td>@item.srno</td>
+                                        <td>@item.ItemName</td>
+                                        <td>@item.ItemDesc</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.UOM</td>
+                                        @if (@item.BidCount == 0)
+                                        {
+                                            <td id="@item.itemid">@item.FloorPrice INR</td>
+                                        }
+                                        else
+                                        {
+                                            <td id="@item.itemid">@item.Leading INR</td>
+
+                                        }
+
+                                        <td>
+                                            @item.ReducePerBid INR
+                                        </td>
+                                        @if (@item.Bidmethod == 1)
+                                        {
+                                            <td><div class="span12" >
+                                            <div class="span6"><input href="#modal-1" type="button" role="button" class="btn btn-primary" data-toggle="modal" onclick="getbid('@securityUtil.Encode(Convert.ToString(item.itemid))');" value="Less @item.ReducePerBid"></div>
+                                                    <div class="span6">
+                                                        <div class="input-small">
+                                                            @Html.DropDownList("Unit", new List<SelectListItem>
+                                                {
+                                                                    new SelectListItem() {Text = "1", Value="1"},
+                                                                    new SelectListItem() {Text = "2", Value="2"},
+                                                                    new SelectListItem() {Text = "3", Value="3"},
+                                                                    new SelectListItem() {Text = "4", Value="4"},
+                                                                    new SelectListItem() {Text = "5", Value="5"}
+                                                }, new { @class="chosen-select",id="Unit" })
+                                                        </div>
+                                                    </div>
+                                            </div></td>
+                                        }
+                                        @if (@item.Bidmethod == 3)
+                                        {
+                                            <td>
+                                                <div class="span12">
+                                                    <div class="span6"><input href="#modal-1" type="button" role="button" class="btn btn-primary" data-toggle="modal" onclick="getbid('@securityUtil.Encode(Convert.ToString(item.itemid))');" value="Add @item.ReducePerBid"></div>
+                                                    <div class="span6">
+                                                        <div class="input-small">
+                                                            @Html.DropDownList("Unit", new List<SelectListItem>
+                                                {
+                                                                    new SelectListItem() {Text = "1", Value="1"},
+                                                                    new SelectListItem() {Text = "2", Value="2"},
+                                                                    new SelectListItem() {Text = "3", Value="3"},
+                                                                    new SelectListItem() {Text = "4", Value="4"},
+                                                                    new SelectListItem() {Text = "5", Value="5"}
+                                                }, new { @class = "chosen-select", id = "Unit" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        }
+                                        @if(@item.Bidmethod==2)
+                                        {
+                                            <td>
+                                                <input id="Price" name="Price" role="textbox" type="number" class="input-small" />
+                                                <input href="#modal-1" type="submit" class="btn btn-primary" data-toggle="modal" id="AddBid" value="Add Bid" onclick="getbid('@securityUtil.Encode(Convert.ToString(item.itemid))');">
+                                            </td>
+                                        }
+                                        @if(@item.Bidmethod==0)
+                                        {
+                                            <td>
+                                                <p>Bid Not Started</p>
+                                            </td>
+                                        }
+
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="box">
+                    <div class="box-title">
+                        <h3>
+                            Yours Bid's
+                        </h3>
+                    </div>
+                    <div class="box-content nopadding">
+                        <table class="table table-hover table-nomargin table-striped">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Item No</th>
+                                    <th class='hidden-350'>Item Name</th>
+                                    <th class='hidden-1024'>Date/Time</th>
+                                    <th class='hidden-480'>Bid Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in ViewBag.BidsDetail)
+                                {
+                                    <tr>
+                                        <td>@item.srno</td>
+                                        <td>@item.itemid</td>
+                                        <td>@item.ItemName</td>
+                                        <td>@item.BiddateTime</td>
+                                        <td>@item.BidPrice</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}

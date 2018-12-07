@@ -1,0 +1,90 @@
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\e-auction.dll.config
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\e-auction.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\e-auction.pdb
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\EntityFramework.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\EntityFramework.SqlServer.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Helpers.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Mvc.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Razor.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Webpages.Deployment.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Webpages.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Webpages.Razor.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\EntityFramework.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\EntityFramework.SqlServer.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Razor.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Webpages.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Webpages.Deployment.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Webpages.Razor.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Helpers.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Mvc.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\obj\Debug\e-auction.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\obj\Debug\e-auction.pdb
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\CaptchaMvc.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\CaptchaMvc.pdb
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\CaptchaMvc.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.Owin.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.Owin.Security.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Newtonsoft.Json.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Owin.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.Owin.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Microsoft.Owin.Security.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Newtonsoft.Json.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Antlr3.Runtime.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Optimization.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\WebGrease.dll
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\Antlr3.Runtime.pdb
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\bin\System.Web.Optimization.xml
+C:\Users\ankit.tomar\documents\visual studio 2013\Projects\e-auction\e-auction\obj\Debug\e-auction.csprojResolveAssemblyReference.cache
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\e-auction.dll.config
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\e-auction.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\e-auction.pdb
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Antlr3.Runtime.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\CaptchaMvc.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\EntityFramework.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\EntityFramework.SqlServer.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.Owin.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.Owin.Security.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Newtonsoft.Json.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Owin.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Helpers.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Mvc.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Optimization.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Razor.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Webpages.Deployment.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Webpages.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Webpages.Razor.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\WebGrease.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Antlr3.Runtime.pdb
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\CaptchaMvc.pdb
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\CaptchaMvc.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\EntityFramework.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\EntityFramework.SqlServer.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.Owin.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Microsoft.Owin.Security.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\Newtonsoft.Json.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Optimization.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Razor.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Webpages.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Webpages.Deployment.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Webpages.Razor.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Helpers.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\bin\System.Web.Mvc.xml
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\obj\Debug\e-auction.csprojAssemblyReference.cache
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\obj\Debug\e-auction.csproj.CoreCompileInputs.cache
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\obj\Debug\e-auction.csproj.CopyComplete
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\obj\Debug\e-auction.dll
+C:\Users\tasmiya.sana\Desktop\clone\ebex_pr_trans-master\Ebid\Source\e-auction\obj\Debug\e-auction.pdb

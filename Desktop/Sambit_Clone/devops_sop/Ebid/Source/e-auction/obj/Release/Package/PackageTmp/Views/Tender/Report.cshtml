@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Report</title>
+</head>
+<body>
+    <div class="container-fluid"> 
+        @foreach (var item in ViewBag.reportitem)
+        {
+        @Html.Raw(item);
+        }
+        
+    </div>
+</body>
+</html>

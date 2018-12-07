@@ -1,0 +1,239 @@
+﻿@model e_auction.Models.Supplier
+
+@{
+    ViewBag.Title = "Supplier";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+        
+        @Html.ValidationSummary(true)
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <div class="container-fluid">
+        
+                <form ></form> @*Pls Do not Delete*@						 
+				<div class="row-fluid">
+						<div class="box box-color box-bordered">
+							<div class="box-title">
+								<h3>
+									<i class="icon-magic"></i>
+									ADD TENDER
+								</h3>
+							</div>
+							<div class="box-content nopadding">
+								<div class='form-horizontal form-wizard' id="ss">
+									<div class="step" id="thirdStep">
+										<ul class="wizard-steps steps-3">
+											<li>
+												<div class="single-step">
+													<span class="title">
+														1</span>
+													<span class="circle">
+													</span>
+													<span class="description">
+														Tender information
+													</span>
+												</div>
+											</li>
+                                            <li>
+                                                <div class="single-step">
+                                                    <span class="title">
+                                                        2
+                                                    </span>
+                                                    <span class="circle">
+                                                    </span>
+                                                    <span class="description">
+                                                        Add Terms & Conditions
+                                                    </span>
+                                                </div>
+                                            </li>
+											<li>
+												<div class="single-step">
+													<span class="title">
+														3</span>
+													<span class="circle">
+													</span>
+													<span class="description">
+														Add Items
+													</span>
+												</div>
+											</li>
+											<li class='active'>
+												<div class="single-step">
+													<span class="title">
+														4</span>
+													<span class="circle">
+														<span class="active"></span>
+													</span>
+													<span class="description">
+														Add Suppliers
+													</span>
+												</div>
+											</li>
+										</ul>
+                                        <div class="control-group">
+                                            <label for="textfield" class="control-label"></label>
+                                            <div class="controls">
+                                                <div class="input-append input-prepend">
+                                                    <span class="add-on"><i class="icon-search"></i></span>
+                                                    
+                                                    <input id="search" name="search" type="text" placeholder="Search here..." value="@ViewBag.SearchText" class='input-medium'>
+                                                    <button class="btn" type="submit"  onclick="location.href = '@Url.Action("Search", "AddSupplier")'">Search!</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                            
+                                        
+                                        
+                                        @if(ViewBag.companylist!=null)
+                                        {
+                                        <div class="container-fluid">
+                                            <div class="row-fluid">
+                                                <div class="span12">
+                                                    <div class="box">
+                                                        <div class="box-title">
+                                                            
+                                                        </div>
+                                                        <div class="box-content nopadding">
+                                                            <table class="table table-hover table-nomargin table-bordered">
+                                                                <thead>
+
+                                                                    <tr>
+
+                                                                        <th>S.No</th>
+                                                                        <th>Supplier Name</th>
+                                                                        <th class='hidden-350'>Contact Person</th>
+                                                                        <th>Email</th>
+                                                                        <th>Options</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    
+                                                                    @if (ViewBag.companylist != null)
+                                                                {
+                                                                foreach (var item in ViewBag.companylist)
+                                                                {
+                                                                    if(item==null)
+                                                                    {
+                                                                        <tr><td>No Supplier Found</td></tr>
+                                                                    }
+                                                                    else { 
+                                                                    <tr>
+                                                                        <td>@item.srno</td>
+                                                                        <td>@item.CompanyName</td>
+                                                                        <td>@item.ContactPerson</td>
+                                                                        <td>@item.Email</td>
+                                                                        <td>@Html.ActionLink("Add", "Add", new { @companyid=@item.CompanyId,@tenderid=Request.QueryString["tenderid"],@Search=@ViewBag.SearchText })</td>
+
+                                                                    </tr>
+                                                                    }
+                                                                }
+                                                                }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            }
+                                        <div class="container-fluid">
+                                            <div class="row-fluid">
+                                                <div class="span12">
+                                                    <div class="box">
+                                                        <div class="box-title">
+                                                            <h3>
+                                                                Added Supplier
+                                                            </h3>
+                                                        </div>
+                                                        <div class="box-content nopadding">
+                                                            <table class="table table-hover table-nomargin table-bordered">
+                                                                <thead>
+
+                                                                    <tr>
+
+                                                                        <th>S.No</th>
+                                                                        <th>Supplier Name</th>
+                                                                        <th class='hidden-350'>Contact Person</th>
+                                                                        <th>Email</th>
+                                                                        <th>Option</th>
+
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @if (ViewBag.supplier == null)
+                                                                    {
+                                                                        <tr><td><h5>No Supplier Added</h5></td></tr>
+                                                                    }
+                                                                    @if (ViewBag.supplier != null)
+                                                                    {
+                                                                        foreach (var item in ViewBag.supplier)
+                                                                        {
+                                                                            <tr>
+                                                                                <td>@item.srno</td>
+                                                                                <td>@item.CompanyName</td>
+                                                                                <td>@item.ContactPerson</td>
+                                                                                <td>@item.Email</td>
+                                                                                <td>@Html.ActionLink("Delete", "Delete", new { @companyid = @item.CompanyId, @tenderid = Request.QueryString["tenderid"],@Search=ViewBag.SearchText })</td>
+                                                                            </tr>
+                                                                        }
+                                                                    }
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="control-group">
+                                            <label for="textfield" class="control-label">Supplier</label>
+                                            <div class="controls">
+                                                
+                                                <select multiple="multiple" id="my-select" name="my-select[]" class='multiselect' data-selectionheader="Select Supplier" data-selectableheader="Search Result">
+                                                    @if (ViewBag.companylist!=null)
+                                                    {
+                                                        foreach (var supp in ViewBag.companylist)
+                                                        {
+                                                            <option value='@supp.CompanyId'>@supp.CompanyName</option>
+                                                        }
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>*@
+									</div>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $("#Draft").click(function () {
+                                                {
+                                                    alert("Tender Draft Saved Successfully");
+
+                                                }
+                                            });
+                                        });
+                                    </script>
+
+									<div class="form-actions">
+                                        
+										<input type="reset" class="btn" value="Back" id="back" name="back">
+                                        <input type="button" class="btn" value="Save As Draft" name="Draft" id="Draft" onclick="location.href = '@Url.Action("Index","Home")'" />
+                                        <input type="submit" name="submit" class="btn btn-primary" value="Save & Submit" id="submit" >
+									</div>
+                                </div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+}
+

@@ -1,0 +1,366 @@
+﻿
+@{
+    ViewBag.Title = "Purchaser";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+@using(Html.BeginForm())
+{ 
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Content/js/jquery.plugin.js"></script>
+    <script src="~/content/js/jquery.countdown.js"></script>
+    <script src="~/Content/js/jquery.countdownTimer.min.js"></script>
+    <script src="~/Content/js/jquery-2.0.3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var interval = 100 * 60 * 1;
+            var tenderid = $("#tenderid").val();
+
+            function get_notify(tenderid) {
+                $.ajax({
+                    type: 'POST',
+                    dataType: "json",
+                    url: 'getnotify',
+                    data: { 'tenderid': tenderid },
+                    success: function (data) {
+                        if (data.length > 0) {
+                            $("#notify").html('<div id="notify" class="alert alert-error">' + data[0].NotifyText + '</div>');
+                        }
+
+                    },
+                    failure: function (err) { alert('error'); }
+                });
+
+            }
+            setInterval(get_notify, interval, tenderid);
+        });
+
+        $(document).ready(function () {
+            var interval = 100 * 10 * 1;
+            var tenderid = $("#tenderid").val();
+            function countdown(timeLeft) {
+                
+                var myinterval = window.setInterval(function () {
+                    var msPerDay = 24 * 60 * 60 * 1000;
+                    clearInterval(myinterval);
+                    timeLeft = timeLeft - 1000;
+                    var e_daysLeft = timeLeft / msPerDay;
+                    var daysLeft = Math.floor(e_daysLeft);
+                    var e_hrsLeft = (e_daysLeft - daysLeft) * 24;
+                    var hrsLeft = Math.floor(e_hrsLeft);
+                    var e_minsLeft = (e_hrsLeft - hrsLeft) * 60;
+                    var minsLeft = Math.floor(e_minsLeft);
+                    var e_secsLeft = (e_minsLeft - minsLeft) * 60;
+                    var secsLeft = Math.floor(e_secsLeft);
+                    var timeString =  hrsLeft+ " : "+ minsLeft + " : " + secsLeft;
+                    if (daysLeft == 0 && hrsLeft == 0 && minsLeft == 0 && secsLeft == 0) {
+                        $.ajax({
+                            type: 'POST',
+                            dataType: "json",
+                            url: 'updateTender',
+                            data: { 'tenderid': tenderid },
+                            success: function (data) {
+
+                            }
+                        });
+                    }
+                    if (timeLeft < 0) {
+                        $('#given_date').html("<span style='font-size:medium; color:Red'>Time Over</span>");
+                    }
+                    else {
+                        $('#given_date').html("Time Left <span style='font-size:medium; color:Red'>" + timeString + "</span>");
+                    }
+                    
+                }, 1000);
+            }
+            function getenddate(tenderid) {
+                $.ajax({
+                    type: 'POST',
+                    dataType: "json",
+                    url: 'gettenderdetail',
+                    data: { 'tenderid': tenderid },
+                    success: function (data) {
+
+                        $("#" + data[0].TenderId).html('<td id=' + data[0].TenderId + '>' + data[0].EndDate + ' ' + data[0].EndTime + ' </td>');
+                        var dateget = data[0].EndDate + ' ' + data[0].EndTime;
+                        var tenderid = data[0].TenderId;
+                        var current = data[0].Currenttime;
+                        $("#currenttime").val(data[0].Currenttime);
+                        $("#enddate").val(dateget);
+                        var get = $("#enddate").val();
+                        var t = dateget.split(/[/ :]/);
+                        var BigDay = new Date(t[2], t[1] - 1, t[0], t[3], t[4], t[5]);
+                        var c = current.split(/[/ :]/);
+                        var today = new Date(c[2], c[1] - 1, c[0], c[3], c[4], c[5]);
+                        var timeLeft = (BigDay.getTime() - today.getTime());
+                        
+                        countdown(timeLeft);
+                    },
+                    failure: function (err) { alert('error'); }
+                });
+
+            }
+            setInterval(getenddate, interval, tenderid);
+        });
+
+
+        $(document).ready(function () {
+            var interval = 100 * 60 * 1;
+            var tenderid = $("#tenderid").val();
+
+            function getLeadingBid(tenderid) {
+
+                $.ajax({
+                    type: 'POST',
+                    dataType: "json",
+                    url: 'getitems',
+                    
+                    data: { 'tenderid': tenderid },
+                    success: function (data) {
+                        var itemcount = data.length;
+                        for (i = 0; i <= itemcount; i++) {
+                            if (data[i].BidCount == 0) {
+                                $("#" + data[i].itemid).html('<td id=' + data[i].itemid + '>' + data[i].FloorPrice + ' INR </td>');
+                            }
+                            else {
+                                $("#" + data[i].itemid).html('<td id=' + data[i].itemid + '>' + data[i].Leading + ' INR</td>');
+                            }
+
+                        }
+                    },
+                    failure: function (err) { alert('error'); }
+                });
+            }
+
+            setInterval(getLeadingBid, interval, tenderid);
+
+        });
+        function getOnlineUser()
+        {
+            var tenderid = $("#tenderid").val();
+            $.ajax({
+                type: 'GET',
+                dataType: "json",
+                url: 'GetOnlineStatus',
+                ContentType: "application/json",
+                data: { 'tenderid':tenderid },
+                success: function (data) {
+                    
+                    var json_obj = $.parseJSON(data);
+                    var tablerow;
+                    for(i=0;i<=json_obj.length;i++)
+                    {
+                        if(json_obj[i].Online=="0")
+                        {
+                            tablerow += '<tr><td ><p style="color:red;">' + json_obj[i].ClientName +  '</p></td></tr>';
+                        }
+                        else
+                        {
+                            tablerow += '<tr><td><p style="color:green;">' + json_obj[i].ClientName +'</p></td></tr>';
+                        }
+                        $('#OnlineUser').html(tablerow);
+                    }
+                },
+                failure: function (err) { alert('error'); }
+            });
+        }
+    </script>
+<div id="modal-1" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">No of Bidders Online</h3>
+    </div>
+    <div  class="modal-body">
+        <table id="OnlineUser"></table>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary" data-dismiss="modal">Close</button>
+    </div>
+</div>
+<div id="modal-2" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">No of Bidders Participated</h3>
+    </div>
+    <div class="modal-body">
+        <p>ABC</p>
+        <p>ABC</p>
+        <p>ABC</p>
+        <p>ABC</p>
+        <p>ABC</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <input type="hidden" value="@Request.QueryString["tenderid"]" name="tenderid" id="tenderid" />
+        <input type="hidden" value="" id="itemid" name="itemid" />
+        <input type="hidden" value="" id="enddate" name="enddate" />
+        <button class="btn btn-primary" data-dismiss="modal">Close</button>
+    </div>
+</div>
+    <div id="notify"></div>
+    <div class="offset6">
+        <span  class="right" id="given_date"></span>
+    </div>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="box">
+                <div class="box-title">
+                    <h3>
+
+                        Auction Detail
+                    </h3>
+                </div>
+                <div class="box-content nopadding">
+                    <table class="table table-hover table-nomargin table-colored-header">
+                        <thead>
+                            <tr>
+                                <th>Auction No</th>
+                                <th>Description</th>
+                                <th>Raised by</th>
+                                <th>Currency</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                                <th>Attachment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.TenderDetail)
+                            {
+                                <tr>
+                                    <td>@item.TenderId</td>
+                                    <td>@item.Tenderdesc</td>
+                                    <td>@item.contactPerson</td>
+                                    <td>INR</td>
+                                    <td>@item.StartDate &nbsp;@item.StartTime</td>
+                                    <td>@item.EndDate &nbsp; @item.EndTime</td>
+                                    <input type="hidden" value="@item.Currenttime" id="currenttime" name="currenttime" />
+                                    <td><a href="@Url.Action("Download", "Tender", new { @tenderid=Request.QueryString["tenderid"]})">Download</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="control-group">
+            
+            <div class="controls centerHere">
+                @foreach (var item in ViewBag.ItemDetails)
+                {
+                    if (@item.Bidmethod == 1)
+                    { 
+                    <input type="text" name="minutes" id="AddMinutes"  class="input-large">
+                    <input href="#modal-2" type="submit" role="button" class="btn notify btn-darkblue" value="Add Minutes" data-notify-time="1000" data-notify-title="Success!" data-notify-message="Minutes Added Successfully." />
+                    }
+                    else
+                    {
+                        <input type="text" name="minutes" id="AddMinutes" class="input-large">
+                        <input href="#modal-2" type="submit" role="button" class="btn notify btn-darkblue" value="Add Minutes" data-notify-time="1000" data-notify-title="Success!" data-notify-message="Minutes Added Successfully." />
+                    }
+                    <input href="#modal-1" type="submit" class="btn btn-primary" data-toggle="modal" id="btnOnline" value="Online Users" onclick="getOnlineUser();">
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="box">
+                <div class="box-title">
+                    <h3>
+                        Item Details
+                    </h3>
+                </div>
+                <div class="box-content nopadding">
+                    <table class="table table-hover table-nomargin table-bordered">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Item Name</th>
+                                <th class='hidden-350'>Item Description</th>
+                                <th class='hidden-1024'>Quantity</th>
+                                <th class='hidden-480'>UOM</th>
+                                <th class='hidden-480'>Leading Bid</th>
+                                
+                                <th class='hidden-480'>Price Reduce/Bid</th>
+                                <th>No of Bidder</th>
+                                <th>No of Bid's</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(var item in ViewBag.ItemDetail)
+                            {
+                                <tr>
+                                    <td>@item.srno</td>
+                                    <td>@item.ItemName</td>
+                                    <td>@item.ItemDesc</td>
+                                    <td>@item.Quantity</td>
+                                    <td>@item.UOM</td>
+                                    @if(@item.BidCount==0)
+                                    { 
+                                        <td id="@item.itemid">@item.FloorPrice</td>
+                                    }
+                                    else 
+                                    { 
+                                        <td id="@item.itemid">@item.Leading</td>
+                                    }
+                                    
+                                    <td>@item.ReducePerBid</td>
+                                    <td>@item.Biddercount</td>
+                                    <td>@item.BidCount</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <div class="box">
+                <div class="box-title">
+                    <h3>
+                        Bid's
+                    </h3>
+                </div>
+                <div class="box-content nopadding">
+                    <table class="table table-hover table-nomargin table-striped">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Item No</th>
+                                <th class='hidden-350'>Item Name</th>
+                                <th class='hidden-1024'>Date/Time</th>
+                                <th>Supplier</th>
+                                <th class='hidden-480'>Bid Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.BidsDetail)
+                            {
+                                <tr>
+                                    <td>@item.srno</td>
+                                    <td>@item.itemid</td>
+                                    <td>@item.ItemName</td>
+                                    <td>@item.BiddateTime</td>
+                                    <td>@item.fictitious_name</td>
+                                    <td>@item.BidPrice</td>
+                                    
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+<script src="~/content/js/jquery.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

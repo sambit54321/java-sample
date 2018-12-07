@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ebidModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BidMethodMaster">
+    <Key>
+      <PropertyRef Name="Methodid" />
+    </Key>
+    <Property Name="Methodid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MethodName" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="CategoryMaster">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="CompanyId" />
+    </Key>
+    <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientId" Type="int" />
+    <Property Name="CompanyName" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="CurrencyMaster">
+    <Key>
+      <PropertyRef Name="currencyid" />
+    </Key>
+    <Property Name="currencyid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="currency" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ItemTypeMaster">
+    <Key>
+      <PropertyRef Name="Typeid" />
+    </Key>
+    <Property Name="Typeid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="typename" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="LoginMaster">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RegisterId" Type="int" />
+    <Property Name="StatusId" Type="int" />
+    <Property Name="LastLogin" Type="datetime" />
+    <Property Name="LoginIP" Type="varchar(max)" />
+    <Property Name="clientpassword" Type="varbinary(max)" />
+    <Property Name="randompassword" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="MinPeriod">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimePeriod" Type="varchar(max)" />
+    <Property Name="Value" Type="time" Precision="7" />
+    <Property Name="mins" Type="int" />
+  </EntityType>
+  <EntityType Name="RegisterMaster">
+    <Key>
+      <PropertyRef Name="RegisterId" />
+    </Key>
+    <Property Name="RegisterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryId" Type="int" />
+    <Property Name="RegisterRole" Type="varchar" MaxLength="10" />
+    <Property Name="CompanyName" Type="varchar(max)" />
+    <Property Name="ContactPerson" Type="varchar(max)" />
+    <Property Name="RegAddress" Type="varchar(max)" />
+    <Property Name="City" Type="varchar(max)" />
+    <Property Name="pincode" Type="int" />
+    <Property Name="StateId" Type="int" />
+    <Property Name="Email" Type="varchar(max)" />
+    <Property Name="Mobile" Type="int" />
+    <Property Name="Telephone" Type="int" />
+    <Property Name="PanNo" Type="varchar" MaxLength="10" />
+    <Property Name="Tin" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="StateMaster">
+    <Key>
+      <PropertyRef Name="stateId" />
+    </Key>
+    <Property Name="stateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatusMaster">
+    <Key>
+      <PropertyRef Name="StatusId" />
+    </Key>
+    <Property Name="StatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tenderid" Type="int" />
+    <Property Name="CompanyId" Type="int" />
+  </EntityType>
+  <EntityType Name="Tender">
+    <Key>
+      <PropertyRef Name="TenderId" />
+    </Key>
+    <Property Name="TenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientId" Type="int" />
+    <Property Name="Attachment" Type="varchar(max)" />
+    <Property Name="TenderDesc" Type="varchar(max)" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="StartTime" Type="varchar" MaxLength="10" />
+    <Property Name="Enddate" Type="date" />
+    <Property Name="Endtime" Type="varchar" MaxLength="10" />
+    <Property Name="TimePeriod" Type="int" />
+    <Property Name="Company" Type="int" />
+    <Property Name="Tstatus" Type="int" />
+  </EntityType>
+  <EntityType Name="TenderItem">
+    <Key>
+      <PropertyRef Name="itemid" />
+    </Key>
+    <Property Name="itemid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tenderid" Type="int" />
+    <Property Name="ItemType" Type="int" />
+    <Property Name="ItemName" Type="varchar(max)" />
+    <Property Name="ItemDesc" Type="varchar(max)" />
+    <Property Name="ItemCategory" Type="int" />
+    <Property Name="Location" Type="varchar(max)" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="UOM" Type="int" Nullable="false" />
+    <Property Name="Price" Type="int" />
+    <Property Name="Currency" Type="int" Nullable="false" />
+    <Property Name="FloorPrice" Type="int" />
+    <Property Name="BidMethod" Type="int" Nullable="false" />
+    <Property Name="ReducePerBid" Type="int" />
+    <Property Name="Remarks" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="UOMMaster">
+    <Key>
+      <PropertyRef Name="UOMid" />
+    </Key>
+    <Property Name="UOMid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UOM" Type="varchar(max)" />
+  </EntityType>
+  <Association Name="abc">
+    <End Role="CategoryMaster" Type="Self.CategoryMaster" Multiplicity="0..1" />
+    <End Role="RegisterMaster" Type="Self.RegisterMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="RegisterMaster">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__company__ClientI__32E0915F">
+    <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="0..1" />
+    <End Role="company" Type="Self.company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginMaster">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="company">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LoginMast__Regis__33D4B598">
+    <End Role="RegisterMaster" Type="Self.RegisterMaster" Multiplicity="0..1" />
+    <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RegisterMaster">
+        <PropertyRef Name="RegisterId" />
+      </Principal>
+      <Dependent Role="LoginMaster">
+        <PropertyRef Name="RegisterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LoginMast__Statu__34C8D9D1">
+    <End Role="StatusMaster" Type="Self.StatusMaster" Multiplicity="0..1" />
+    <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusMaster">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="LoginMaster">
+        <PropertyRef Name="StatusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RegisterM__State__36B12243">
+    <End Role="StateMaster" Type="Self.StateMaster" Multiplicity="0..1" />
+    <End Role="RegisterMaster" Type="Self.RegisterMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StateMaster">
+        <PropertyRef Name="stateId" />
+      </Principal>
+      <Dependent Role="RegisterMaster">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Supplier__Compan__37A5467C">
+    <End Role="company" Type="Self.company" Multiplicity="0..1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Supplier__Tender__38996AB5">
+    <End Role="Tender" Type="Self.Tender" Multiplicity="0..1" />
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tender">
+        <PropertyRef Name="TenderId" />
+      </Principal>
+      <Dependent Role="Supplier">
+        <PropertyRef Name="Tenderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tender__ClientId__398D8EEE">
+    <End Role="LoginMaster" Type="Self.LoginMaster" Multiplicity="0..1" />
+    <End Role="Tender" Type="Self.Tender" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoginMaster">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="Tender">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tender__Company__3A81B327">
+    <End Role="company" Type="Self.company" Multiplicity="0..1" />
+    <End Role="Tender" Type="Self.Tender" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="company">
+        <PropertyRef Name="CompanyId" />
+      </Principal>
+      <Dependent Role="Tender">
+        <PropertyRef Name="Company" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tender__Tstatus__3B75D760">
+    <End Role="StatusMaster" Type="Self.StatusMaster" Multiplicity="0..1" />
+    <End Role="Tender" Type="Self.Tender" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusMaster">
+        <PropertyRef Name="StatusId" />
+      </Principal>
+      <Dependent Role="Tender">
+        <PropertyRef Name="Tstatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TenderIte__BidMe__3D5E1FD2">
+    <End Role="BidMethodMaster" Type="Self.BidMethodMaster" Multiplicity="1" />
+    <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BidMethodMaster">
+        <PropertyRef Name="Methodid" />
+      </Principal>
+      <Dependent Role="TenderItem">
+        <PropertyRef Name="BidMethod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TenderIte__Curre__3E52440B">
+    <End Role="CurrencyMaster" Type="Self.CurrencyMaster" Multiplicity="1" />
+    <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CurrencyMaster">
+        <PropertyRef Name="currencyid" />
+      </Principal>
+      <Dependent Role="TenderItem">
+        <PropertyRef Name="Currency" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TenderIte__ItemC__3F466844">
+    <End Role="CategoryMaster" Type="Self.CategoryMaster" Multiplicity="0..1" />
+    <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryMaster">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="TenderItem">
+        <PropertyRef Name="ItemCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TenderIte__ItemT__403A8C7D">
+    <End Role="ItemTypeMaster" Type="Self.ItemTypeMaster" Multiplicity="0..1" />
+    <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ItemTypeMaster">
+        <PropertyRef Name="Typeid" />
+      </Principal>
+      <Dependent Role="TenderItem">
+        <PropertyRef Name="ItemType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TenderIte__Tende__412EB0B6">
+    <End Role="Tender" Type="Self.Tender" Multiplicity="0..1" />
+    <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tender">
+        <PropertyRef Name="TenderId" />
+      </Principal>
+      <Dependent Role="TenderItem">
+        <PropertyRef Name="Tenderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TenderItem__UOM__4222D4EF">
+    <End Role="UOMMaster" Type="Self.UOMMaster" Multiplicity="1" />
+    <End Role="TenderItem" Type="Self.TenderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UOMMaster">
+        <PropertyRef Name="UOMid" />
+      </Principal>
+      <Dependent Role="TenderItem">
+        <PropertyRef Name="UOM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tender_minperiod">
+    <End Role="MinPeriod" Type="Self.MinPeriod" Multiplicity="0..1" />
+    <End Role="Tender" Type="Self.Tender" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MinPeriod">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Tender">
+        <PropertyRef Name="TimePeriod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="checklogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="clientid" Type="int" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="del_supplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="companyid" Type="int" Mode="In" />
+    <Parameter Name="tenderid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="get_company" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="text" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="get_supplierlist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tenderid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getitemslist" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tenderid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Register" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="category" Type="int" Mode="In" />
+    <Parameter Name="role" Type="varchar" Mode="In" />
+    <Parameter Name="company" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+    <Parameter Name="city" Type="varchar(max)" Mode="In" />
+    <Parameter Name="state" Type="int" Mode="In" />
+    <Parameter Name="pincode" Type="int" Mode="In" />
+    <Parameter Name="pan" Type="varchar" Mode="In" />
+    <Parameter Name="Person" Type="varchar(max)" Mode="In" />
+    <Parameter Name="email" Type="varchar(max)" Mode="In" />
+    <Parameter Name="mobile" Type="int" Mode="In" />
+    <Parameter Name="Telephone" Type="int" Mode="In" />
+    <Parameter Name="tin" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="save_item" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="itemid" Type="int" Mode="In" />
+    <Parameter Name="tenderid" Type="int" Mode="In" />
+    <Parameter Name="itemtype" Type="int" Mode="In" />
+    <Parameter Name="itemname" Type="varchar(max)" Mode="In" />
+    <Parameter Name="desc" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Category" Type="int" Mode="In" />
+    <Parameter Name="location" Type="varchar(max)" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="UOM" Type="int" Mode="In" />
+    <Parameter Name="price" Type="int" Mode="In" />
+    <Parameter Name="currency" Type="int" Mode="In" />
+    <Parameter Name="method" Type="int" Mode="In" />
+    <Parameter Name="reduce" Type="int" Mode="In" />
+    <Parameter Name="remarks" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="save_supplier" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="companyid" Type="int" Mode="In" />
+    <Parameter Name="tenderid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="save_tender" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Tenderid" Type="int" Mode="In" />
+    <Parameter Name="ClientId" Type="int" Mode="In" />
+    <Parameter Name="TenderDesc" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Filename" Type="varchar(max)" Mode="In" />
+    <Parameter Name="startdate" Type="datetime" Mode="In" />
+    <Parameter Name="StartTime" Type="varchar" Mode="In" />
+    <Parameter Name="TimePeriodId" Type="int" Mode="In" />
+    <Parameter Name="Company" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="ebidModelStoreContainer">
+    <EntitySet Name="BidMethodMaster" EntityType="Self.BidMethodMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryMaster" EntityType="Self.CategoryMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CurrencyMaster" EntityType="Self.CurrencyMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ItemTypeMaster" EntityType="Self.ItemTypeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginMaster" EntityType="Self.LoginMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MinPeriod" EntityType="Self.MinPeriod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegisterMaster" EntityType="Self.RegisterMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StateMaster" EntityType="Self.StateMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatusMaster" EntityType="Self.StatusMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tender" EntityType="Self.Tender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TenderItem" EntityType="Self.TenderItem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UOMMaster" EntityType="Self.UOMMaster" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="abc" Association="Self.abc">
+      <End Role="CategoryMaster" EntitySet="CategoryMaster" />
+      <End Role="RegisterMaster" EntitySet="RegisterMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK__company__ClientI__32E0915F" Association="Self.FK__company__ClientI__32E0915F">
+      <End Role="LoginMaster" EntitySet="LoginMaster" />
+      <End Role="company" EntitySet="company" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LoginMast__Regis__33D4B598" Association="Self.FK__LoginMast__Regis__33D4B598">
+      <End Role="RegisterMaster" EntitySet="RegisterMaster" />
+      <End Role="LoginMaster" EntitySet="LoginMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LoginMast__Statu__34C8D9D1" Association="Self.FK__LoginMast__Statu__34C8D9D1">
+      <End Role="StatusMaster" EntitySet="StatusMaster" />
+      <End Role="LoginMaster" EntitySet="LoginMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RegisterM__State__36B12243" Association="Self.FK__RegisterM__State__36B12243">
+      <End Role="StateMaster" EntitySet="StateMaster" />
+      <End Role="RegisterMaster" EntitySet="RegisterMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Supplier__Compan__37A5467C" Association="Self.FK__Supplier__Compan__37A5467C">
+      <End Role="company" EntitySet="company" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Supplier__Tender__38996AB5" Association="Self.FK__Supplier__Tender__38996AB5">
+      <End Role="Tender" EntitySet="Tender" />
+      <End Role="Supplier" EntitySet="Supplier" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tender__ClientId__398D8EEE" Association="Self.FK__Tender__ClientId__398D8EEE">
+      <End Role="LoginMaster" EntitySet="LoginMaster" />
+      <End Role="Tender" EntitySet="Tender" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tender__Company__3A81B327" Association="Self.FK__Tender__Company__3A81B327">
+      <End Role="company" EntitySet="company" />
+      <End Role="Tender" EntitySet="Tender" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tender__Tstatus__3B75D760" Association="Self.FK__Tender__Tstatus__3B75D760">
+      <End Role="StatusMaster" EntitySet="StatusMaster" />
+      <End Role="Tender" EntitySet="Tender" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TenderIte__BidMe__3D5E1FD2" Association="Self.FK__TenderIte__BidMe__3D5E1FD2">
+      <End Role="BidMethodMaster" EntitySet="BidMethodMaster" />
+      <End Role="TenderItem" EntitySet="TenderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TenderIte__Curre__3E52440B" Association="Self.FK__TenderIte__Curre__3E52440B">
+      <End Role="CurrencyMaster" EntitySet="CurrencyMaster" />
+      <End Role="TenderItem" EntitySet="TenderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TenderIte__ItemC__3F466844" Association="Self.FK__TenderIte__ItemC__3F466844">
+      <End Role="CategoryMaster" EntitySet="CategoryMaster" />
+      <End Role="TenderItem" EntitySet="TenderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TenderIte__ItemT__403A8C7D" Association="Self.FK__TenderIte__ItemT__403A8C7D">
+      <End Role="ItemTypeMaster" EntitySet="ItemTypeMaster" />
+      <End Role="TenderItem" EntitySet="TenderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TenderIte__Tende__412EB0B6" Association="Self.FK__TenderIte__Tende__412EB0B6">
+      <End Role="Tender" EntitySet="Tender" />
+      <End Role="TenderItem" EntitySet="TenderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TenderItem__UOM__4222D4EF" Association="Self.FK__TenderItem__UOM__4222D4EF">
+      <End Role="UOMMaster" EntitySet="UOMMaster" />
+      <End Role="TenderItem" EntitySet="TenderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tender_minperiod" Association="Self.FK_Tender_minperiod">
+      <End Role="MinPeriod" EntitySet="MinPeriod" />
+      <End Role="Tender" EntitySet="Tender" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

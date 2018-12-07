@@ -1,0 +1,291 @@
+
+***************************************************************
+b'RDP is Compliant!\n'
+***************************************************************
+
+Firewall Status:
+
+Domain Profile Settings: 
+----------------------------------------------------------------------
+State                                 ON
+
+Private Profile Settings: 
+----------------------------------------------------------------------
+State                                 ON
+
+Public Profile Settings: 
+----------------------------------------------------------------------
+State                                 ON
+Ok.
+
+*************************************************************** 
+Services List: 
+
+Image Name                     PID Services                                    
+========================= ======== ============================================
+System Idle Process              0 N/A                                         
+System                           4 N/A                                         
+Registry                       104 N/A                                         
+smss.exe                       392 N/A                                         
+csrss.exe                      556 N/A                                         
+wininit.exe                    668 N/A                                         
+csrss.exe                      676 N/A                                         
+services.exe                   736 N/A                                         
+winlogon.exe                   772 N/A                                         
+lsass.exe                      792 KeyIso, Netlogon, SamSs, VaultSvc           
+svchost.exe                    936 PlugPlay                                    
+fontdrvhost.exe                968 N/A                                         
+fontdrvhost.exe                976 N/A                                         
+svchost.exe                     72 BrokerInfrastructure, DcomLaunch, Power,    
+                                   SystemEventsBroker                          
+svchost.exe                    580 RpcEptMapper, RpcSs                         
+svchost.exe                    808 LSM                                         
+dwm.exe                       1116 N/A                                         
+svchost.exe                   1136 BDESVC                                      
+svchost.exe                   1240 BthAvctpSvc                                 
+svchost.exe                   1248 nsi                                         
+svchost.exe                   1256 bthserv                                     
+svchost.exe                   1264 W32Time                                     
+svchost.exe                   1280 NcbService                                  
+svchost.exe                   1288 TimeBrokerSvc                               
+svchost.exe                   1352 BFE, CoreMessagingRegistrar, mpssvc         
+svchost.exe                   1440 Schedule                                    
+svchost.exe                   1480 Dhcp                                        
+svchost.exe                   1532 EventLog                                    
+svchost.exe                   1568 ProfSvc                                     
+svchost.exe                   1604 Dnscache                                    
+svchost.exe                   1648 BTAGService                                 
+svchost.exe                   1740 DeviceAssociationService                    
+svchost.exe                   1752 camsvc                                      
+svchost.exe                   1768 lfsvc                                       
+svchost.exe                   1844 NlaSvc                                      
+svchost.exe                   1932 UserManager                                 
+atiesrxx.exe                  1968 AMD External Events Utility                 
+dasHost.exe                   2032 N/A                                         
+svchost.exe                   2064 netprofm                                    
+atieclxx.exe                  2164 N/A                                         
+svchost.exe                   2172 CscService                                  
+svchost.exe                   2180 EventSystem                                 
+svchost.exe                   2188 SysMain                                     
+svchost.exe                   2196 Themes                                      
+svchost.exe                   2288 SENS                                        
+svchost.exe                   2304 FontCache                                   
+Memory Compression            2340 N/A                                         
+svchost.exe                   2352 SSDPSRV                                     
+svchost.exe                   2400 AudioEndpointBuilder                        
+svchost.exe                   2700 Audiosrv                                    
+svchost.exe                   2744 Winmgmt                                     
+svchost.exe                   2784 WinHttpAutoProxySvc                         
+svchost.exe                   2872 StateRepository                             
+RtkAudioService64.exe         2916 RtkAudioService                             
+svchost.exe                   2932 iphlpsvc                                    
+svchost.exe                   3028 DusmSvc                                     
+svchost.exe                   3044 Wcmsvc                                      
+PulseSecureService.exe        3052 PulseSecureService                          
+svchost.exe                   1984 NcaSvc                                      
+svchost.exe                   2248 Eaphost                                     
+svchost.exe                   3192 dot3svc                                     
+RAVBg64.exe                   3260 N/A                                         
+RAVBg64.exe                   3276 N/A                                         
+RAVBg64.exe                   3304 N/A                                         
+svchost.exe                   3396 WlanSvc                                     
+svchost.exe                   3528 ShellHWDetection                            
+spoolsv.exe                   3624 Spooler                                     
+svchost.exe                   3632 NetSetupSvc                                 
+WmiPrvSE.exe                  3764 N/A                                         
+svchost.exe                   3880 LanmanWorkstation                           
+wlanext.exe                   4000 N/A                                         
+conhost.exe                   4040 N/A                                         
+svchost.exe                   4060 LanmanServer                                
+MobileMediaReminderServic     4108 AMMR                                        
+armsvc.exe                    4120 AdobeARMservice                             
+DefendpointService.exe        4128 Avecto Defendpoint Service                  
+OfficeClickToRun.exe          4172 ClickToRunSvc                               
+svchost.exe                   4180 DPS                                         
+svchost.exe                   4188 DiagTrack                                   
+BtwRSupportService.exe        4204 BcmBtRSupport                               
+HotkeyService.exe             4212 HP Hotkey Service                           
+svchost.exe                   4220 CryptSvc                                    
+jenkins.exe                   4232 Jenkins                                     
+edpa.exe                      4252 EDPA                                        
+KService.exe                  4260 KService                                    
+svchost.exe                   4284 IKEEXT                                      
+svchost.exe                   4292 SstpSvc                                     
+nexus.exe                     4308 nexus                                       
+sqlwriter.exe                 4320 SQLWriter                                   
+SecurityHealthService.exe     4328 SecurityHealthService                       
+ccSvcHst.exe                  4340 SepMasterService                            
+svchost.exe                   4352 stisvc                                      
+SynTPEnhService.exe           4396 SynTPEnhService                             
+TaniumClient.exe              4416 Tanium Client                               
+svchost.exe                   4480 TrkWks                                      
+wdp.exe                       4492 WDP                                         
+svchost.exe                   4516 WpnService                                  
+nexus.exe                     5340 N/A                                         
+svchost.exe                   5444 RasMan                                      
+java.exe                      5608 N/A                                         
+svchost.exe                   5648 WdiServiceHost                              
+WmiPrvSE.exe                  5824 N/A                                         
+conhost.exe                   5928 N/A                                         
+unsecapp.exe                  6900 N/A                                         
+kvoop.exe                     1192 N/A                                         
+kvoop.exe                     6256 N/A                                         
+ccSvcHst.exe                  7576 N/A                                         
+SynTPEnh.exe                  7364 N/A                                         
+sihost.exe                    5376 N/A                                         
+svchost.exe                   7780 CDPUserSvc_e06d2                            
+dllhost.exe                   7164 N/A                                         
+svchost.exe                   7684 WpnUserService_e06d2                        
+SynTPHelper.exe               7680 N/A                                         
+SmcGui.exe                    8480 N/A                                         
+taskhostw.exe                 8560 N/A                                         
+svchost.exe                   9020 TabletInputService                          
+ctfmon.exe                    9164 N/A                                         
+explorer.exe                  2232 N/A                                         
+svchost.exe                   2940 CDPSvc                                      
+svchost.exe                   8720 TokenBroker                                 
+svchost.exe                   7796 Appinfo                                     
+svchost.exe                   9040 PcaSvc                                      
+dllhost.exe                   9492 N/A                                         
+svchost.exe                   9736 PeerDistSvc                                 
+CUI.exe                      10048 N/A                                         
+dllhost.exe                   9992 N/A                                         
+ShellExperienceHost.exe       9316 N/A                                         
+svchost.exe                   9156 DoSvc                                       
+svchost.exe                   8164 UsoSvc                                      
+SearchUI.exe                  9464 N/A                                         
+Microsoft.Notes.exe           4512 N/A                                         
+SettingSyncHost.exe          10320 N/A                                         
+RuntimeBroker.exe            11056 N/A                                         
+RuntimeBroker.exe            10644 N/A                                         
+SkypeApp.exe                 10340 N/A                                         
+SkypeBackgroundHost.exe       8400 N/A                                         
+RuntimeBroker.exe             6100 N/A                                         
+svchost.exe                  10316 StorSvc                                     
+svchost.exe                  11120 LicenseManager                              
+RuntimeBroker.exe            12092 N/A                                         
+MSASCuiL.exe                 11480 N/A                                         
+RuntimeBroker.exe            12112 N/A                                         
+RtkNGUI64.exe                12160 N/A                                         
+Microsoft.Notes.DesktopBr     7628 N/A                                         
+RtsCM64.exe                  11948 N/A                                         
+AccentureMobileMediaRemin    12416 N/A                                         
+PGSystemTray.exe             12688 N/A                                         
+SearchIndexer.exe            12980 WSearch                                     
+OneDrive.exe                 13208 N/A                                         
+lync.exe                     12604 N/A                                         
+ToastNotificationApp.Wpf.    13100 N/A                                         
+QLBController.exe             9924 N/A                                         
+CcmExec.exe                   1008 CcmExec                                     
+jusched.exe                   7308 N/A                                         
+Pulse.exe                     1492 N/A                                         
+hpqwmiex.exe                  3540 hpqwmiex                                    
+KHost.exe                     7736 N/A                                         
+PulseSecureService.exe       10896 N/A                                         
+unsecapp.exe                 13404 N/A                                         
+svchost.exe                  13036 OneSyncSvc_e06d2,                           
+                                   PimIndexMaintenanceSvc_e06d2,               
+                                   UnistoreSvc_e06d2, UserDataSvc_e06d2        
+WmiPrvSE.exe                 13196 N/A                                         
+SgrmBroker.exe               13576 SgrmBroker                                  
+WmiPrvSE.exe                 11688 N/A                                         
+svchost.exe                  14428 WinRM                                       
+svchost.exe                  14100 wscsvc                                      
+UcMapi.exe                   14500 N/A                                         
+WmiPrvSE.exe                 14492 N/A                                         
+SCNotification.exe           14956 N/A                                         
+jucheck.exe                  15332 N/A                                         
+lynchtmlconv.exe             14296 N/A                                         
+LockApp.exe                   6200 N/A                                         
+RuntimeBroker.exe             5808 N/A                                         
+ApplicationFrameHost.exe     16348 N/A                                         
+WinStore.App.exe              7768 N/A                                         
+RuntimeBroker.exe             1840 N/A                                         
+MicrosoftEdge.exe            16156 N/A                                         
+browser_broker.exe            8396 N/A                                         
+RuntimeBroker.exe            14488 N/A                                         
+MicrosoftEdgeCP.exe           1000 N/A                                         
+MicrosoftEdgeCP.exe           1924 N/A                                         
+dllhost.exe                   6488 N/A                                         
+FileCoAuth.exe                7064 N/A                                         
+svchost.exe                  18752 WebClient                                   
+svchost.exe                  14040 BITS                                        
+wepsvc.exe                   23656 WSTS                                        
+TSUI.exe                     27128 N/A                                         
+svchost.exe                  22120 DsSvc                                       
+chrome.exe                    1656 N/A                                         
+chrome.exe                   15916 N/A                                         
+chrome.exe                    9940 N/A                                         
+chrome.exe                   22268 N/A                                         
+chrome.exe                    2856 N/A                                         
+chrome.exe                    7232 N/A                                         
+cmd.exe                      17828 N/A                                         
+conhost.exe                  18684 N/A                                         
+brkrprcs64.exe               14260 N/A                                         
+chrome.exe                   10084 N/A                                         
+chrome.exe                   20952 N/A                                         
+java.exe                     22288 N/A                                         
+conhost.exe                  23144 N/A                                         
+java.exe                     18720 N/A                                         
+conhost.exe                  25900 N/A                                         
+chrome.exe                   16908 N/A                                         
+java.exe                     24700 N/A                                         
+conhost.exe                   1552 N/A                                         
+chrome.exe                   24992 N/A                                         
+chrome.exe                     208 N/A                                         
+chrome.exe                   16620 N/A                                         
+chrome.exe                   23808 N/A                                         
+chrome.exe                   16232 N/A                                         
+chrome.exe                   21232 N/A                                         
+chrome.exe                    4268 N/A                                         
+chrome.exe                   20092 N/A                                         
+chrome.exe                   27172 N/A                                         
+notepad.exe                  25380 N/A                                         
+chrome.exe                   28024 N/A                                         
+chrome.exe                   22536 N/A                                         
+TaniumClient.exe             31204 N/A                                         
+conhost.exe                  31684 N/A                                         
+TaniumClient.exe             31716 N/A                                         
+conhost.exe                  30984 N/A                                         
+svchost.exe                  34324 PrintWorkflowUserSvc_e06d2                  
+svchost.exe                  32648 lmhosts                                     
+OUTLOOK.EXE                  29020 N/A                                         
+iexplore.exe                 32840 N/A                                         
+iexplore.exe                  3568 N/A                                         
+notepad.exe                  29168 N/A                                         
+SearchProtocolHost.exe        4408 N/A                                         
+chrome.exe                   33776 N/A                                         
+chrome.exe                   12228 N/A                                         
+audiodg.exe                  29656 N/A                                         
+chrome.exe                   11164 N/A                                         
+SearchProtocolHost.exe       15068 N/A                                         
+chrome.exe                   15452 N/A                                         
+chrome.exe                   30796 N/A                                         
+svchost.exe                  32452 gpsvc                                       
+SearchFilterHost.exe         25212 N/A                                         
+smartscreen.exe              29800 N/A                                         
+cmd.exe                      28676 N/A                                         
+conhost.exe                  34516 N/A                                         
+python.exe                   31380 N/A                                         
+backgroundTaskHost.exe       30500 N/A                                         
+svchost.exe                  31240 ClipSVC                                     
+RuntimeBroker.exe            30584 N/A                                         
+cmd.exe                       8180 N/A                                         
+tasklist.exe                 25816 N/A                                         
+*************************************************************** 
+User Account Details: 
+Password last set            10/10/2018 3:13:10 PM
+Password expires             12/24/2018 3:13:10 PM
+Password changeable          10/10/2018 3:13:10 PM
+Password required            Yes
+Local Group Memberships      *Administrators       
+Password last set            12/6/2018 11:29:40 AM
+Password expires             Never
+Password changeable          12/6/2018 11:29:40 AM
+Password required            No
+Local Group Memberships      *Guests               
+
+--------------------------------------------------------------
+	Hostname is:CPX-DLB7PRWSJM7
+--------------------------------------------------------------
+***************************************************************

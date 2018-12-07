@@ -1,0 +1,156 @@
+﻿@model e_auction.Models.Tender
+
+@{
+    ViewBag.Title = "Disclaimer";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true)
+    <script src="~/Content/js/jquery-1.8.2.js"></script>
+        @*<script src="http://code.jquery.com/jquery-1.8.2.js"></script>*@
+<div style="padding:0; margin:0;" bgcolor="#ffffff">
+
+    
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+        <tr>
+            <td align="center">
+                <center>
+                    <table border="0" width="1000" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="color:#333333 !important; font-size:20px; font-family: Arial, Verdana, sans-serif; padding-left:10px;" height="40">
+                                <h3 style="font-weight:normal; margin: 20px 0;">BUSINESS RULES FOR REVERSE AUCTION</h3>
+                                <h5 style="font-weight:normal; margin: 20px 0;"><u>GENERAL TERMS AND CONDITIONS OF REVERSE AUCTION</u></h5>
+                                <p style="font-size:12px; line-height:18px;">
+                                    Against this Enquiry for the subject item/system with detailed scope of supply as per our specification, Essel Group of companies will conduct “ONLINE REVERSE AUCTION PROCEDURE” i.e. <b>ONLINE BIDDING on INTERNET.</b><br />
+                                    <br />
+                                    <br />1.	Essel Group of companies will engage the services of a service provider who will provide all necessary training without any cost and assistance before commencement of on line bidding on Internet.<br />
+                                    <br />2.	Essel Group of companies will inform the vendors in writing the details of service provider to enable them to contact and get trained.<br />
+                                    <br />3.	Business rules like event date, time, start price, bid decrement, extensions, etc. also will be communicated through service provider for compliance.<br />
+                                    <br />4.	Vendors have to Agree of the Process Compliance Form  in the prescribed this attach BOQ and view Terms & Conditions before start of Online Reverse Auction. Without this, the vendor will not be eligible to participate in the event.<br />
+                                    <br />5.	Percentage reduction accepted by partner at the closure of bid should be uniform & applicable to each and every individual item. For eg. If the opening price is Rs. 10/- & contract finalized at Rs 7/-. so there is a reduction of 30 % which is applicable to each & every item which is there in Rs. 10/- & there should not be 50% -60% reduction on particular item to achieve overall reduction of 30%.<br />
+                                    <br />6.	Once floor price is accepted by the partner, Essel Group has the right to award the order.<br />
+                                    
+                                    
+                                    
+
+                                </p>
+                                <h5 style="font-weight:normal; margin: 20px 0;"><u>Finalization of  the Procurement</u></h5>
+                                <p style="font-size:12px; line-height:18px;">
+                                    Essel Group of companies shall finalize the procurement of the item against this Tender through reverse auction mode. Essel Group of companies has made arrangement with M/s. C1 India Pvt. Ltd.  Who shall be Essel Group of companies authorized service provider for the same. Please go through the guidelines given below and submit your acceptance to the same along with your Commercial Bid.
+                                    <br />
+                                    <br />1.	Computerized reverse auction shall be conducted by Essel Group of companies, on pre-specified date, while the vendors shall be quoting from their own offices/ place of their choice. <u>Failure of power or internet malfunctioning at the premises of vendors during the Reverse auction cannot be the cause for not participating in the reverse auction. On account of this, the time for the auction cannot be extended and Essel Group of companies  will be responsible for such eventualities.</u><br />
+                                    <br />2.	Sealed Bid: Bidders shall be asked to enter the Price as per Price Format (Annexure-I). Bidders shall be allowed to enter their price once only and will not be able to view the bids of other bidders.<br />
+                                    <br />3.	Only those bidders who have submitted the online sealed bid with in the scheduled time, shall be eligible to participate further in RA process.<br />
+                                    <br />5.	Auction Extension Online English Reverse (no ties) Auction shall be for a period of mention minutes. If a bidder places a bid in the last 5 minutes of closing of the Reverse Auction and if that bid gets accepted, then the auction’s duration shall get extended automatically up to 5 minutes (i.e. for that particular line item), from the time that bid comes in. Please note that the auto-extension will take place only if a bid comes in those last 5 minutes and if that bid gets accepted. If the bid does not get accepted, the auto-extension will not take place even if that bid might have come in the last 5 minutes. In case, there is no bid in the last 5 minutes of closing of Reverse Auction, the auction shall get closed automatically without any extension. However, vendors are advised not to wait till the last minute or last few seconds to enter their bid during the auto-extension period to avoid complications related with internet connectivity, network problems, system crash down, power failure, etc.<br />
+                                    <br />6.	Your bid will be taken as an offer to supply. Bids once made by you, cannot be cancelled / withdrawn and you shall be bound to supply as mentioned above at your final bid price. Should you back out and not supply as per the rates quoted, Essel Group of companies shall take action as appropriate<br />
+                                    <br />7.	Bidders shall be assigned a Unique UserName & Password by Essel group of Companies Bidders are advised to change the Password to ensure confidentiality. All bids made from the Login ID given to you will be deemed to have been made by your company.<br />
+                                    <br />8.	Bidders will be able to view the following on your screen along with the necessary fields in the English Reverse (no ties) Auction:<br />
+
+                                            a.	Auction Start Time & End Time.<br />
+                                            b.	Opening Price & Bid Decrement value (Decided by Essel Group of companies)<br />
+                                            c.	L1 Price / Market Base Price<br />
+                                            d.	Bid Placed by you<br />
+                                            e.	Your Own Rank<br />
+                                    <br />9.	At the end of the Reverse Auction, Essel Group of companies  will decide upon the winner. Essel Group of companies decision on award of Contract shall be final and binding on all the Bidders.<br />
+                                    <br />10.	Essel Group of companies shall be at liberty to cancel the reverse auction process / tender at any time, before ordering, without assigning any reason.<br />
+                                    <br />Essel Group of companies shall have any liability to bidders for any interruption or delay in access to the site irrespective of the cause<br />
+
+                                </p>
+                                
+                                
+                                    @foreach (var item in ViewBag.termsconditions)
+                                        
+                                    {
+                                        <h5 style="font-weight:normal; margin: 20px 0;"><u>Additional Terms & Conditions</u></h5>
+                                        <div id="pterms">
+                                            @Html.Raw(item)
+                                        </div>
+                                    }
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </td>
+        </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#ffffff">
+        <tr>
+            <td align="center">
+                <center>
+                    <table border="0" width="600" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="color:#333333 !important; font-size:20px; font-family: Arial, Verdana, sans-serif; padding-left:10px;" height="40">
+                                <p style="font-size:12px; line-height:18px;">
+
+                                    <div style="font-size:20px;">Download Attachment: <a href=" @Url.Action("Download", "Tender", new { @tenderid = Request.QueryString["tenderid"] }) ">Download</a></div>
+                                </p>
+
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </td>
+        </tr>
+    </table>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#2c5e7b">
+        <tr>
+            <td align="center">
+                <center>
+                    <table border="0" width="600" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td style="color:#ffffff !important; font-size:20px; font-family: Arial, Verdana, sans-serif; padding-left:10px;" height="40">
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </td>
+            </tr>
+        <tr>
+            
+            <td align="right">
+                <center>
+                    <script>
+                        $(document).ready(function () {
+                            $('#agreecheck').click(function () {
+                                if ($("#agreecheck").is(':checked')) {
+                                    $('#Acceptance').removeAttr('disabled', 'disabled');
+                                } else {
+                                    $('#Acceptance').attr('disabled','disabled');
+                                }
+                            });
+                        });
+                    </script>
+                    <input type="checkbox" id="agreecheck" style="margin-bottom:15px"  /> I agree above Terms & Conditions with attach BOQ & BRQ
+                </center>
+</td>
+        </tr>
+        <tr>
+            <td align="right">
+                <center>
+                    <table border ="0" width="600" cellpadding="0" cellspacing="0">
+                        <tr><td>
+                                <input type="submit" value="Agree" id="Acceptance" name="Acceptance" class="btn btn-success " disabled />
+                                <input type="submit" value="Disagree" id="Acceptance" name="Acceptance" class="btn btn-danger offset2" />
+                            </td></tr>
+                        
+                    </table>
+                </center>
+                </td>
+            <td>
+                
+            </td>
+                
+        </tr>
+        
+    </table>
+    
+    <input type="hidden" value="@Request.QueryString["tenderid"]" name="tenderid" id="tenderid" />
+    
+</div>
+}
+

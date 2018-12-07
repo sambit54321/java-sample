@@ -1,0 +1,322 @@
+﻿
+@{
+    ViewBag.Title = "POInvoiceTrack";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+
+                <div class="box box-bordered box-color satblue">
+                    <div class="box-title">
+                        <h3>PO/Invoice Track</h3>
+                    </div>
+                    <div class="box-content nopadding">
+                        <ul id="dashboard" class="tabs tabs-inline tabs-top">
+
+                            <li class='active span4'>
+                                <a href="#first11" data-toggle='tab'><i class="icon-inbox"></i> PO Pending</a>
+                            </li>
+                            <li class="span4">
+                                <a href="#second22" data-toggle='tab'><i class="icon-share-alt"></i>Invoice Update</a>
+                            </li>
+                            <li class="span4">
+                                <a href="#thirds33" data-toggle='tab'><i class="icon-tag"></i>Invoice Done</a>
+                            </li>
+                            @*<li class="span3">
+                                    <a href="#Fourth44" data-toggle='tab'><i class="icon-book"></i>Auction Reports</a>
+                                </li>*@
+                        </ul>
+                        <div class="tab-content padding tab-content-inline tab-content-bottom">
+                            <div class="tab-pane active" id="first11">
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <div class="box box-color box-bordered">
+                                            <div class="box-title">
+
+                                            </div>
+                                            <div class="box-content nopadding">
+                                                <table class="table table-nomargin dataTable table-bordered">
+                                                    <thead>
+                                                        <tr class='thefilter'>
+                                                            @*<th>S.No</th>*@
+                                                            <th>Tender ID</th>
+                                                            <th>Start Date</th>
+                                                            <th>Description</th>
+                                                            <th>WF No</th>
+                                                            <th>PO Number </th>
+                                                            <th>PO Date</th>
+                                                            <th>Options</th>
+                                                        </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in ViewBag.PO)
+                                                        {
+                                                            <tr>
+                                                                @*<td>
+                                                    <span class="label">@item.srno</span>
+                                                </td>*@
+                                                                <td>@item.tenderid</td>
+                                                                <td>@item.startDate</td>
+                                                                <td>@item.tenderdesc</td>
+                                                                <td>@item.wf_no</td>
+                                                                <td>@item.ponumber</td>
+                                                                <td>@item.podate</td>
+                                                                <td>
+                                                                    <a role="button" data-toggle="modal" onclick="UpdateModal(@item.tenderid);" href="#model-UpdatePO" class=" btn btn-primary">Update PO</a>
+                                                                </td>
+                                                            </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function UpdateModal(a)
+                                {                                  
+                                    $('#hdnTenderid').val(a);
+                                }
+                            </script>
+                            <div id="model-UpdatePO" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="box box-bordered box-color">
+                                    <div class="box-content nopadding">
+                                        <div class="modal-header">
+                                            <div class="box-title">
+                                                <h3>Update PO</h3>
+                                                <button style="float:right;" type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="control-group">
+                                                <table>
+                                                    <tr>
+                                                        <td><label for="textfield" class="control-label">PO Number</label></td>
+
+                                                        <td><input type="hidden" name="hdnTenderid" id="hdnTenderid" /> <input type="text" name="PO" id="PO" placeholder="PO Number" class="input-block-level" required="required"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label for="textfield" class="control-label">PO Date</label></td>
+                                                        <td><input type="text" name="PODate" id="PODate" placeholder="PO Date" class="input-block-level datepick" required="required"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label for="textfield" class="control-label">Vendor Name</label></td>
+                                                        <td><input type="text" name="vendor" id="vendor" placeholder="Vendor Name" class="input-block-level " required="required"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                            <script>
+                                                function updatePO()
+                                                {
+                                                    var tenderid = $('#hdnTenderid').val();
+                                                    var PO = $('#PO').val();
+                                                    var PODate = $('#PODate').val();
+                                                    var vendor = $('#vendor').val();
+                                                    if(tenderid==''||PO==''||PODate==''||vendor=='')
+                                                    {
+                                                        return alert('Please input all field');
+                                                    }
+                                                    var url = '/Home/UpdatePO';
+                                                    $.ajax({
+                                                        url: url,
+                                                        data: {hdnTenderid:tenderid,PO:PO,PODate:PODate,vendor:vendor}, //parameters go here in object literal form
+                                                        type: 'POST',
+                                                        datatype: 'json',
+                                                        success: function (data) {
+                                                            
+                                                            alert('Updated Successfully');
+                                                            window.location.reload();
+                                                        },
+                                                        error: function () { alert('something bad happened'); }
+                                                    });
+                                                    
+                                                }
+                                                
+                                            </script>
+                                            <a class=" btn btn-primary" onclick="updatePO()" >Update PO</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="second22">
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <div class="box box-color box-bordered">
+                                            <div class="box-title">
+
+                                            </div>
+                                            <div class="box-content nopadding">
+                                                <table class="table table-nomargin dataTable table-bordered">
+                                                    <thead>
+                                                        <tr class='thefilter'>
+                                                            @*<th>S.No</th>*@
+                                                            <th>Tender ID</th>
+                                                            <th>Start Date</th>
+                                                            <th>Description</th>
+                                                            <th>WF Number</th>
+                                                            <th>PO Number</th>
+                                                            <th>PO Date</th>
+                                                            <th>Vendor Name</th>
+                                                            <th>Options</th>
+                                                        </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in ViewBag.Invoice)
+                                                        {
+                                                            <tr>
+                                                                <td>@item.tenderid</td>
+                                                                <td>@item.startDate</td>
+                                                                <td>@item.tenderdesc</td>
+                                                                <td>@item.wf_no</td>
+                                                                <td>@item.ponumber</td>
+                                                                <td>@item.podate</td>
+                                                                <td>@item.vendorname</td>
+                                                                <td>
+                                                                    <a role="button" data-toggle="modal" onclick="UpdateModalInvoice(@item.tenderid);" href="#model-UpDateInvoice" class=" btn btn-primary">Update Invoice</a>
+                                                                </td>
+                                                            </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                function UpdateModalInvoice(a) {
+                                    $('#hdnTenderidInvoice').val(a);
+                                }
+                            </script>
+
+                            <div id="model-UpDateInvoice" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="box box-bordered box-color">
+                                    <div class="box-content nopadding">
+                                        <div class="modal-header">
+                                            <div class="box-title">
+                                                <h3>Update PO</h3>
+                                                <button style="float:right;" type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="control-group">
+                                                <table>
+                                                    <tr>
+                                                        <td><label for="textfield" class="control-label">Invoice Number</label></td>
+
+                                                        <td><input type="hidden" name="hdnTenderidInvoice" id="hdnTenderidInvoice" /> <input type="text" name="InvoiceNo" id="InvoiceNo" placeholder="Invoice Number" class="input-block-level" required="required"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><label for="textfield" class="control-label">Invoice Date</label></td>
+                                                        <td><input type="text" name="InvoiceDate" id="InvoiceDate" placeholder="Invoice Date" class="input-block-level datepick" required="required"></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                                            <script>
+                                                function updateInvoice() {
+                                                    var tenderid = $('#hdnTenderidInvoice').val();
+                                                    var InvoiceNo = $('#InvoiceNo').val();
+                                                    var InvoiceDate = $('#InvoiceDate').val();
+                                                    if(tenderid==''||InvoiceNo==''||InvoiceDate=='')
+                                                    {
+                                                        return alert('Please input all field');
+                                                    }
+                                                    var url = '/Home/UpdateInvoice';
+                                                    $.ajax({
+                                                        url: url,
+                                                        data: { hdnTenderidInvoice: tenderid, InvoiceNo: InvoiceNo, InvoiceDate: InvoiceDate}, //parameters go here in object literal form
+                                                        type: 'POST',
+                                                        datatype: 'json',
+                                                        success: function (data) {
+
+                                                            alert('Updated Successfully');
+                                                            window.location.reload();
+                                                        },
+                                                        error: function () { alert('something bad happened'); }
+                                                    });
+
+                                                }
+
+                                            </script>
+                                            <a class=" btn btn-primary" onclick="updateInvoice()" >Update Invoice</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane" id="thirds33">
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <div class="box box-color box-bordered">
+                                            <div class="box-title">
+
+                                            </div>
+                                            <div class="box-content nopadding">
+                                                <table class="table table-nomargin dataTable table-bordered">
+                                                    <thead>
+                                                        <tr class='thefilter'>
+                                                            @*<th>S.No</th>*@
+                                                            <th>Tender ID</th>
+                                                            <th>Start Date</th>
+                                                            <th>Description</th>
+                                                            <th>WF Number</th>
+                                                            <th>PO Number</th>
+                                                            <th>PO Date</th>
+                                                            <th>Vendor Name</th>
+                                                            <th>Invoice No</th>
+                                                            <th>Invoice Date</th>
+
+                                                        </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in ViewBag.Close)
+                                                        {
+                                                            <tr>
+                                                                @*<td>@item.srno</td>*@
+                                                                <td>@item.tenderid</td>
+                                                                <td>@item.startDate</td>
+                                                                <td>@item.tenderdesc</td>
+                                                                <td>@item.wf_no</td>
+                                                                <td>@item.ponumber</td>
+                                                                <td>@item.podate</td>
+                                                                <td>@item.vendorname</td>
+                                                                <td>@item.InvoiceNumber</td>
+                                                                <td>@item.invoicedate</td>
+
+                                                            </tr>
+                                                        }
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                        </div>
+                                    </div>
+                        </div>
+        </div>
+    </div>
+}
+
