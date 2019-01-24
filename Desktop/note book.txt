@@ -1,0 +1,187 @@
+
+https://blog.couchbase.com/continuous-deployment-with-jenkins-and-net/
+http://10.2.247.29:7990/projects/EBPT/repos/ebex_pr_trans/browse 
+
+
+sonarqube for ms build
+userid= devops
+pasword
+"C:\github project\Ebid\Source\e-auction.sln"
+
+
+compiler path source code path
+
+fxcop  = .net code analyse
+
+
+
+compile execute steps:
+
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet_compiler.exe -p "%PROJECT_ROOT%" /v /commercesite /u /f "%WEB_ROOT%"
+
+C:\New folder\ebex_pr_trans\MyPayMyChoice>
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet_compiler.exe -p "C:\New folder\ebex_pr_trans\MyPayMyChoice\Source" /v /commercesite /u /f "C:\Myoutput"
+
+
+
+
+
+
+https://www.youtube.com/watch?v=mRO3UJkPsxs
+
+
+FxCopCmd.exe /file:C:\Myoutput\bin\App*.dll /rule:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Team Tools\Static Analysis Tools\FxCop\Rules" /out:C:\Myoutput\fxcopreport.xml
+
+
+
+if solution file is present in .Net project:
+(1)cd "C:\Users\s.e.kumar.pradhan\git_clone\ebex_pr_trans\Ebid"   ==== go to the root file
+(2)MSBuild.SonarQube.Runner.exe begin /k:"Ebid" /n:"Ebid" /v:"4.4" ===== 
+(3)"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe" "C:\Users\s.e.kumar.pradhan\git_clone\ebex_pr_trans\Ebid\Source\e-auction.sln"  
+(4)MSBuild.SonarQube.Runner.exe end ===== This will end the analysis and return the result to SonarQube server
+
+
+bitbucket
+(1) first download the bit bucket5.16 // https://www.atlassian.com/software/bitbucket/download
+(2) then install bitbucket 
+(3) then you have to set the path in environment variable// 
+(4) 
+
+
+Bitbucket process
+cd folder path
+git add practice.txt
+git remote -v
+git remote add origin clone url
+
+
+pull all data from bitbucket and stare it in to local drives
+
+(5) go to cmd and type cd location path where you want to copy the files.
+
+
+
+
+
+
+node {
+    //stage('SCM-checkout') {
+        //git 'https://github.com/sambit54321/practice.git'
+        stage('SCM-checkout') {
+            def mvnHome = checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ae9aebd3-f496-4892-b313-e01a0ffa64f3', url: 'https://github.com/sambit54321/practice.git']]])
+}
+stage('Build') {
+    bat '''"C:\\apache-maven-3.6.0\\bin\\mvn" clean install -f "C:\\Jenkins\\workspace\\pipeline_maven_test\\maven-simple-master\\pom.xml"'''
+}
+stage('Code-Analysis') {
+    bat "cd C:\\Jenkins\\workspace\\pipeline_maven_test"
+    bat "mvn sonar:sonar -f C:\\Jenkins\\workspace\\pipeline_maven_test\\maven-simple-master\\pom.xml"
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+"C:\Users\s.e.kumar.pradhan\git_clone\ebex_pr_trans\Ebid\Source\e-auction.sln"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://www.fluxbytes.com/microsoft/download-fxcop-10/
+
+
+C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Team Tools\Static Analysis Tools\FxCop
+
+
+E:\My\Project\Precompiled\bin\App*.dll
+
+
+
+
+
+https://stackoverflow.com/questions/25754137/how-can-i-run-select-fxcop-rules-using-the-command-line
+FxCopCmd.exe /file:C:\Myoutput\bin\App*.dll /rule:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Team Tools\Static Analysis Tools\FxCop\Rules" /out:C:\Myoutput\fxcopreport.xml
+
+
+
+
+using curl.
+
+curl --upload-file my.zip -u admin:admin123 -v http://localhost:8081/nexus/service/local/repositories/releases/content-compressed/foo/bar
+
+
+
+
+
+curl --upload-file my.zip -u admin:admin123 -v http://localhost:8081/nexus/service/local/repositories/releases/content-compressed/com/company
+
+
+
+
+
+
+
+
+https://flywaydb.org/documentation/commandline/migrate
+flyway code sample
+
+
+
+https://flywaydb.org/getstarted/repeatable
+
+
+
+http://ccbautomation.com/   ======= oracle ccb
+
+
+https://docs.oracle.com/cd/E24628_01/doc.121/e28814/blueprint.htm#EMCLO1910  ========= blue print oracle ccb
+
+Bitbucket with jenkins work:
+
+
+https://wiki.jenkins.io/display/JENKINS/Promoted+Builds+Plugin
+
+https://www.cloudbees.com/blog/another-look-jenkins-promoted-builds-plugin 
+https://blogs.perficient.com/2017/06/14/jenkins-delivery-pipeline-and-build-promotion-2/ 
+
+
+
+https://stackoverflow.com/questions/23149176/jenkins-promoting-builds-with-paramaterized-build-parameters
+
+https://stackoverflow.com/questions/20188456/how-to-change-the-security-type-from-ssl-to-tls-in-jenkins
+
+
+
+
+https://learning-continuous-deployment.github.io/jenkins/github/2015/04/17/github-jenkins/
+
+
+https://www.edureka.co/blog/ci-cd-pipeline/
